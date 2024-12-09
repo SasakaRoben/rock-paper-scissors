@@ -31,3 +31,6 @@ function getHumanChoice()
             alert("Invalid choice");
     }
 }
+
+let humanScore = 0;
+let computerScore = 0;
