@@ -18,7 +18,7 @@ function getComputerChoice()
 
 function getHumanChoice()
 {
-    let humanChoice = prompt("Enter your choice:\n 1.Rock \n 2.Paper \n 3.scissors: ");
+    let humanChoice = prompt("Enter your choice:\n 1.Rock \n 2.Paper \n 3.Scissors: ");
     switch(humanChoice)
     {
         case "1":
@@ -34,3 +34,28 @@ function getHumanChoice()
 
 let humanScore = 0;
 let computerScore = 0;
+
+function playRound(humanChoice, computerChoice)
+{
+    if (humanChoice == computerChoice)
+    {
+        console.log("It's a tie!");
+    }
+    else if ((humanChoice == "rock" && computerChoice == "scissors") ||
+             (humanChoice == "scissors" && computerChoice == "paper") || 
+             (humanChoice == "paper" && computerChoice == "rock"))
+    {
+        console.log("You win this round!");
+        humanScore++;
+    }
+    else
+    {
+        console.log("Computer wins this round!");
+        computerScore++;
+    }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
