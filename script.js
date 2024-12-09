@@ -16,3 +16,18 @@ function getComputerChoice()
     }
 }
 
+function getHumanChoice()
+{
+    let humanChoice = prompt("Enter your choice:\n 1.Rock \n 2.Paper \n 3.scissors: ");
+    switch(humanChoice)
+    {
+        case "1":
+            return "rock";
+        case "2":
+            return "paper";
+        case "3":
+            return "scissors";
+        default:
+            alert("Invalid choice");
+    }
+}
