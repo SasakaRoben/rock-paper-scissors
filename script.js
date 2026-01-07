@@ -46,3 +46,11 @@ for (let round = 1; round <= 5; round++) {
     computerChoice = getComputerChoice();
 }
 
+console.log(`Final Score - You: ${humanScore}, Computer: ${computerScore}`);
+if (humanScore > computerScore) {
+    console.log("Congratulations! You are the overall winner!");
+} else if (humanScore < computerScore) {
+    console.log("Sorry! The computer is the overall winner!");
+} else {
+    console.log("It's an overall tie!");
+}
