@@ -36,14 +36,14 @@ function playGame(humanChoice, computerChoice) {
 let humanScore = 0;
 let computerScore = 0;
 
-let humanChoice = getHumanChoice().toLowerCase();
-let computerChoice = getComputerChoice();
+let humanChoice;
+let computerChoice;
 
 for (let round = 1; round <= 5; round++) {
     console.log(`Round ${round}:`);
-    playGame(humanChoice, computerChoice);
     humanChoice = getHumanChoice().toLowerCase();
     computerChoice = getComputerChoice();
+    playGame(humanChoice, computerChoice);
 }
 
 console.log(`Final Score - You: ${humanScore}, Computer: ${computerScore}`);
