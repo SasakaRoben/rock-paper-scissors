@@ -25,11 +25,16 @@ let computerChoice;
 
 const resultDiv = document.createElement("div");
 const scoreDiv = document.createElement("div");
+const finalResultDiv = document.createElement("div");
 
 document.body.appendChild(resultDiv);
 document.body.appendChild(scoreDiv);
+document.body.appendChild(finalResultDiv);
 
 function playGame(humanChoice, computerChoice) {
+    if (humanScore === 0 && computerScore === 0) {
+        finalResultDiv.textContent = "";
+    }
     if (humanChoice === "rock" && computerChoice === "scissors" ||
         humanChoice === "paper" && computerChoice === "rock" ||
         humanChoice === "scissors" && computerChoice === "paper") {
@@ -43,6 +48,14 @@ function playGame(humanChoice, computerChoice) {
     }
 
     scoreDiv.textContent = `Current Scores - You: ${humanScore}, Computer: ${computerScore}`;
+
+    if (humanScore === 5) {
+        finalResultDiv.textContent = "Congratulations! You won the game!";
+        resetGame();
+    } else if (computerScore === 5) {
+        finalResultDiv.textContent = "Sorry! The computer won the game!";
+        resetGame();
+    }
 }
 
 const buttons = document.querySelectorAll("button");
@@ -53,6 +66,14 @@ buttons.forEach(button => {
         playGame(humanChoice, computerChoice);
     });
 });
+
+function resetGame() {
+    humanScore = 0;
+    computerScore = 0;
+    resultDiv.textContent = "";
+    scoreDiv.textContent = "Game reset! Start again.";
+}
+
 
 
 
