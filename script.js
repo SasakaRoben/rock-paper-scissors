@@ -17,40 +17,42 @@ function getHumanChoice() {
     return prompt("Enter your choice: ")
 }
 
-function playGame(humanChoice, computerChoice) {
-
-
-    if (humanChoice == "rock" && computerChoice == "scissors" ||
-        humanChoice == "paper" && computerChoice == "rock" ||
-        humanChoice == "scissors" && computerChoice == "paper") {
-        humanScore++;
-        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
-    } else if (humanChoice == computerChoice) {
-        console.log(`It's a tie! You both chose ${humanChoice}.`);
-    } else {
-        computerScore++;
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
-    }
-}
-
 let humanScore = 0;
 let computerScore = 0;
 
 let humanChoice;
 let computerChoice;
 
-for (let round = 1; round <= 5; round++) {
-    console.log(`Round ${round}:`);
-    humanChoice = getHumanChoice().toLowerCase();
-    computerChoice = getComputerChoice();
-    playGame(humanChoice, computerChoice);
+const resultDiv = document.createElement("div");
+const scoreDiv = document.createElement("div");
+
+document.body.appendChild(resultDiv);
+document.body.appendChild(scoreDiv);
+
+function playGame(humanChoice, computerChoice) {
+    if (humanChoice === "rock" && computerChoice === "scissors" ||
+        humanChoice === "paper" && computerChoice === "rock" ||
+        humanChoice === "scissors" && computerChoice === "paper") {
+        humanScore++;
+        resultDiv.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
+    } else if (humanChoice === computerChoice) {
+        resultDiv.textContent = `It's a tie! You both chose ${humanChoice}.`;
+    } else {
+        computerScore++;
+        resultDiv.textContent = `You lose! ${computerChoice} beats ${humanChoice}.`;
+    }
+
+    scoreDiv.textContent = `Current Scores - You: ${humanScore}, Computer: ${computerScore}`;
 }
 
-console.log(`Final Score - You: ${humanScore}, Computer: ${computerScore}`);
-if (humanScore > computerScore) {
-    console.log("Congratulations! You are the overall winner!");
-} else if (humanScore < computerScore) {
-    console.log("Sorry! The computer is the overall winner!");
-} else {
-    console.log("It's an overall tie!");
-}
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        humanChoice = button.textContent.toLowerCase();
+        computerChoice = getComputerChoice();
+        playGame(humanChoice, computerChoice);
+    });
+});
+
+
+
